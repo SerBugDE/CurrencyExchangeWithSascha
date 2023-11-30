@@ -5,6 +5,7 @@ package repository;
 */
 
 import model.Account;
+import model.Operation;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +16,10 @@ public class AccountRepository {
     private final AtomicInteger currentAccountId = new AtomicInteger(1);
 
     private final Map<Integer, List<Account>> accounts;
+    private final Map<Integer, List<Operation>> accountOperations;
 
     public AccountRepository() {
         this.accounts = new HashMap<>();
+        this.accountOperations = new HashMap<>();
     }
 }
