@@ -14,6 +14,7 @@ import java.util.Optional;
 
 public interface IR_AccountRepo {
     Account createAccount(User user, Currency currency);
+    @Deprecated
     Account createAccount(int userId, Currency currency);
 
     List<Account> getAllUsersAccounts(User user); // или id?
@@ -22,8 +23,8 @@ public interface IR_AccountRepo {
 
     Optional<Account> getUserAccountByCurrency(User user, Currency currency);
 
-    boolean applyOperation(User user, Account account, Operation operation);
+    boolean applyOperation(Account account, Operation operation);
 
-
+    List<Operation> getHistory(Account account);
 
 }
