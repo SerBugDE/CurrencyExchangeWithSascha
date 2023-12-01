@@ -4,9 +4,14 @@ import validators.exceptions.PasswordValidateException;
 
 public class PasswordValidator {
 
+    // буква большая/маленькая, цифра и спец.символ
+
     public static void validate(String password) throws PasswordValidateException {
 
+        //TODO при вдохновении перезаписать RegEx
+
         if (password.length() < 8) throw new PasswordValidateException("wrong password length");
+        // length >= 8
 
 
 

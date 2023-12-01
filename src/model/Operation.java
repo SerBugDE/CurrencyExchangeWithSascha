@@ -8,12 +8,14 @@ import java.time.LocalDateTime;
 
 public class Operation {
     private final int operationId;
-    private final User user;
+    private final User user; // поменять на аккаунт?
     private TypeOperation type;
     private double amount;
     private Currency currency;
     private double rate;
     private final LocalDateTime time;
+
+    //TODO Счет операции
 
     public Operation(int operationId, User user, TypeOperation type, double amount, Currency currency, double rate) {
         this.user = user;

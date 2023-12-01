@@ -22,6 +22,8 @@ public class EmailValidator {
         // индекс последнего length - 1;
         // индекс пред-последнего length - 2;
 
+
+
         if (email.lastIndexOf('.') >= email.length() - 2) throw new EmailValidateException("last . error");
 
         // английский алфавит, цифры, '_', '-', '.', '@'
@@ -37,7 +39,9 @@ public class EmailValidator {
     }
 
     private static boolean isContainLegalSymbols(char c){
-        return (Character.isAlphabetic(c) || Character.isDigit(c) || c == '.'
+        //TODO переписать RexEx
+        // Character.isAlphabetic(c)
+        return (String.valueOf(c).matches("[a-zA-Z]") || Character.isDigit(c) || c == '.'
                 || c == '_' || c == '-' || c == '@' );
     }
 }

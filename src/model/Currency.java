@@ -7,8 +7,8 @@ package model;
 import java.util.Objects;
 
 public class Currency {
-    private final String code;
-    private String title;
+    private final String code; //USD, EUR, PLN
+    private String title; // US Dollar, Euro,
 
     public Currency(String code, String title) {
         this.code = code;

@@ -15,8 +15,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AccountRepository {
     private final AtomicInteger currentAccountId = new AtomicInteger(1);
 
-    private final Map<Integer, List<Account>> accounts;
-    private final Map<Integer, List<Operation>> accountOperations;
+    private final Map<Integer, List<Account>> accounts; // Map<userId, List<Account>>
+    private final Map<Integer, List<Operation>> accountOperations; // Map<accountId, List<Operation>>
 
     public AccountRepository() {
         this.accounts = new HashMap<>();
