@@ -19,7 +19,7 @@ public interface IR_AccountRepo {
 
     List<Account> getAllUsersAccounts(User user); // SERG
 
-    boolean deleteAccount(User user, Account account);
+    boolean deleteAccount(User user, Account account); //SERG
 
     Optional<Account> getUserAccountByCurrency(User user, Currency currency); //SERG
 

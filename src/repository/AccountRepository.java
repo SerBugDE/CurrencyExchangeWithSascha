@@ -32,4 +32,8 @@ public class AccountRepository {
                 .filter(a -> a.getCurrency().equals(currency)).findFirst();
     }
 
+    public boolean deleteAccount(User user, Account account){
+        return accounts.getOrDefault(user.getId(), new ArrayList<>()).remove(account);
+    }
+
 }
