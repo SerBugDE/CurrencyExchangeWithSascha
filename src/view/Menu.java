@@ -130,32 +130,32 @@ public class Menu {
     private void choiceUserMenuProcessing(int choice) {
         switch (choice) {
             case 1:
-                //TODO menuUserAuthorisation();
+                //TODO menuUserAuthorisation(); //Sasha
 
                 waitRead();
                 break;
             case 2:
-                //TODO menuUserRegistration();
+                //TODO menuUserRegistration(); //Serg
 
                 waitRead();
                 break;
             case 3:
-                //TODO showUsersAccounts();
+                //TODO showUsersAccounts(); //Sacha
 
                 waitRead();
                 break;
             case 4:
-                //TODO menuAddAccount();
+                //TODO menuAddAccount(); //Sasha
 
                 waitRead();
                 break;
             case 5:
-                //TODO menuDeleteAccount();
+                //TODO menuDeleteAccount(); //Serg
 
                 waitRead();
                 break;
             case 6:
-                //TODO menuUserHistory();
+                //TODO menuUserHistory(); //Sasha
                 waitRead();
                 break;
             case 0:
