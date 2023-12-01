@@ -13,9 +13,9 @@ import java.util.Map;
 
 public class CurrencyRepository {
 
-    private final Map<String, Rate> rates;
-    private final Map<String, Currency> currencyMap;
-    private final Map<String, List<Rate>> historyRates;
+    private final Map<String, Rate> rates; // codeCurrency
+    private final Map<String, Currency> currencyMap; // codeCur Currency
+    private final Map<String, List<Rate>> historyRates; // codeCur, List<Rate>
 
     public CurrencyRepository() {
         this.rates = new HashMap<>();

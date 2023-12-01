@@ -27,19 +27,15 @@ public class Menu {
         this.exchangeService = new ExchangeService(userService, currencyService);
     }
 
+
     public void run(){
-        showMenu();
+       showMenu();
     }
 
     private void showMenu() {
         while (true) {
-            System.out.println("Добро пожаловать в обмен валют");
-            System.out.println("=========== v 1.0 ===========");
-            System.out.println("1. Обмен валют");
-            System.out.println("2. Меню пользователей");
-            System.out.println("3. Меню администратора");
-            System.out.println("0. Выход");
-            System.out.println("\n Сделайте выбор:");
+            PrintMenuOptions.printShowMenu();
+
             int choice = SCANNER.nextInt();
             SCANNER.nextLine();
             if (choice == 0) {
@@ -70,15 +66,7 @@ public class Menu {
 
     private void showCurrencyMenu() {
         while (true) {
-            System.out.println("Currency Menu");
-            System.out.println("1. Список валют");
-            System.out.println("2. Текущие курсы");
-            System.out.println("3. Обмен валют");
-            System.out.println("4. История курсов");
-            System.out.println("5. Пополнить счет");
-            System.out.println("6. Снять со счета");
-            System.out.println("0. Вернуться в предыдущее меню");
-            System.out.println("\n Сделайте выбор:");
+            PrintMenuOptions.printShowCurrencyMenu();
             int choice = SCANNER.nextInt();
             SCANNER.nextLine();
             if (choice == 0) break;
@@ -88,16 +76,7 @@ public class Menu {
 
     private void showUsersMenu() {
         while (true) {
-            System.out.println("Users Menu");
-            System.out.println("1. Авторизоваться");
-            System.out.println("2. Регистрация пользователя");
-            System.out.println("3. Список счетов пользователя");
-            System.out.println("4. Добавить счет");
-            System.out.println("5. Удалить счет");
-            System.out.println("6. История всех операций");
-            System.out.println("7. История операций по валюте");
-            System.out.println("0. Вернуться в предыдущее меню");
-            System.out.println("\n Сделайте выбор:");
+            PrintMenuOptions.printShowUsersMenu();
             int choice = SCANNER.nextInt();
             SCANNER.nextLine();
             if (choice == 0) break;
@@ -105,7 +84,7 @@ public class Menu {
         }
     }
 
-    private void choiceCurrencyMenuProcessing(int choice) {
+    public void choiceCurrencyMenuProcessing(int choice) {
         switch (choice) {
             case 1:
                 // TODO menuCurrencyList();
@@ -146,6 +125,7 @@ public class Menu {
                 waitRead();
         }
     }
+
 
     private void choiceUserMenuProcessing(int choice) {
         switch (choice) {

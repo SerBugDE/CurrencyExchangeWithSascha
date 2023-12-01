@@ -15,7 +15,7 @@ public interface IS_CurrencyService {
     List<Currency> getAllCurrencies();
 
     Map<String, Rate> getRates();
-    List<Rate> getHistory(Currency currency);
+    //List<Rate> getHistory(Currency currency);
     double getCurrencyRate(Currency currency);
     List<Rate> getRateHistory(Currency currency);
 
