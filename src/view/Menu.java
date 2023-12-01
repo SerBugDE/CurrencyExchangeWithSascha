@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Menu {
 
@@ -33,8 +34,8 @@ public class Menu {
     }
 
 
-    public void run(){
-       showMenu();
+    public void run() {
+        showMenu();
     }
 
     private void showMenu() {
@@ -201,6 +202,37 @@ public class Menu {
             account = accountOptional.get();
         }
 
+        if (account.getBalance() != 0) {
+            System.out.printf("На счету %.2f %s\n", account.getBalance(), account.getCurrency().getCode());
+            if (userAccounts.size() == 1) {
+                System.out.println("Вы не можете закрыть единственный счет с ненулевым остатком");
+                return;
+            } else {
+                System.out.println("Вы не можете закрыть счет с ненулевым остатком");
+                return;
+                //TODO счетов больше чем 1. Реализовать конвертацию остатка на другой счет
+                /*
+                String accountCurrencyCode = account.getCurrency().getCode();
+                List<String> userCurrencies = userAccounts.stream().map(a -> a.getCurrency().getCode())
+                        .filter(code -> !code.equals(accountCurrencyCode)).collect(Collectors.toList());
+                    System.out.print("У вас еще есть счета в валютах: ");
+                for (String code: userCurrencies){
+                    System.out.print(code + "; ");
+                }
+                System.out.println();
+                System.out.printf("Выберите на какой счет конвертировать средства с закрываемого счета(%s)\n", accountCurrencyCode);
+                String inputCur = SCANNER.nextLine().trim().toUpperCase();
+                 */
+
+            }
+        }
+
+        System.out.println("На этом счету нет средств. Счет закрывается");
+        boolean isClosed = currencyService.deleteAccount(activeUser, account);
+
+        System.out.printf("Счет %s закрыт\n", (isClosed) ? "успешно" : "не был");
+
+
 
     }
 
@@ -209,12 +241,11 @@ public class Menu {
         String inputCur = SCANNER.nextLine().trim().toUpperCase();
         return currencyService.getCurrencyByCode(inputCur.trim().toUpperCase());
     }
+
     private void waitRead() {
         System.out.println("\nДля продолжения нажмите Enter ...");
         SCANNER.nextLine();
     }
-
-
 
 
 }

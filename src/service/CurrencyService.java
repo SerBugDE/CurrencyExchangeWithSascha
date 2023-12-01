@@ -35,7 +35,11 @@ public class CurrencyService {
     }
 
     public Optional<Account> getAccountByCurrency(User user, Currency currency) {
-        return accountRepo.
+        return accountRepo.getUserAccountByCurrency(user, currency);
+    }
+
+    public boolean deleteAccount(User user, Account account){
+        return accountRepo.deleteAccount(user, account);
     }
 
 }
