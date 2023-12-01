@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IR_CurrencyRepo {
-    Currency getCurrencyByCode(String curCode);
+    Currency getCurrencyByCode(String curCode); //SERG
     List<Currency> getAllCurrencies();
     Rate getCurrencyRate(String curCode);
     Rate getCurrencyRate(Currency currency);
