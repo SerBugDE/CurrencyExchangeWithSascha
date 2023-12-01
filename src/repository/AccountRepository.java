@@ -5,11 +5,11 @@ package repository;
 */
 
 import model.Account;
+import model.Currency;
 import model.Operation;
+import model.User;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class AccountRepository {
@@ -22,4 +22,14 @@ public class AccountRepository {
         this.accounts = new HashMap<>();
         this.accountOperations = new HashMap<>();
     }
+
+    public List<Account> getAllUsersAccounts(User user){
+        return accounts.getOrDefault(user.getId(), new ArrayList<>());
+    }
+
+    public Optional<Account> getUserAccountByCurrency(User user, Currency currency){
+        return accounts.getOrDefault(user.getId(), new ArrayList<>()).stream()
+                .filter(a -> a.getCurrency().equals(currency)).findFirst();
+    }
+
 }

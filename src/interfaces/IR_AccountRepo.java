@@ -17,11 +17,11 @@ public interface IR_AccountRepo {
     @Deprecated
     Account createAccount(int userId, Currency currency);
 
-    List<Account> getAllUsersAccounts(User user); // или id?
+    List<Account> getAllUsersAccounts(User user); // SERG
 
     boolean deleteAccount(User user, Account account);
 
-    Optional<Account> getUserAccountByCurrency(User user, Currency currency);
+    Optional<Account> getUserAccountByCurrency(User user, Currency currency); //SERG
 
     boolean applyOperation(Account account, Operation operation);
 

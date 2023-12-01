@@ -4,11 +4,16 @@ package view;
 @author Sergey Bugaienko
 */
 
+import model.Account;
+import model.Currency;
+import model.User;
 import service.CurrencyService;
 import service.ExchangeService;
 import service.UserService;
 
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Menu {
@@ -150,7 +155,7 @@ public class Menu {
                 waitRead();
                 break;
             case 5:
-                //TODO menuDeleteAccount(); //Serg
+                menuDeleteAccount(); //Serg
 
                 waitRead();
                 break;
@@ -167,6 +172,43 @@ public class Menu {
         }
     }
 
+    private void menuDeleteAccount() {
+        System.out.println("Удалить счет");
+        User activeUser = userService.getActiveUser();
+        if (activeUser == null) {
+            System.out.println("Авторизуйтесь в системе");
+            return;
+        }
+
+        List<Account> userAccounts = currencyService.getUserAccounts(activeUser);
+        if (userAccounts.isEmpty()) {
+            System.out.println("У вас нет активных счетов");
+            return;
+        }
+
+        Currency currency = getCurrencyByInputCode();
+        if (currency == null) {
+            System.out.println("У вас нет счета в такой валюте");
+            return;
+        }
+
+        Optional<Account> accountOptional = currencyService.getAccountByCurrency(activeUser, currency);
+        Account account = null;
+        if (accountOptional.isEmpty()) {
+            System.out.println("У вас нет счета в такой валюте");
+            return;
+        } else {
+            account = accountOptional.get();
+        }
+
+
+    }
+
+    private Currency getCurrencyByInputCode() {
+        System.out.println("Введите код валюты?");
+        String inputCur = SCANNER.nextLine().trim().toUpperCase();
+        return currencyService.getCurrencyByCode(inputCur.trim().toUpperCase());
+    }
     private void waitRead() {
         System.out.println("\nДля продолжения нажмите Enter ...");
         SCANNER.nextLine();

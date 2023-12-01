@@ -57,4 +57,8 @@ public class CurrencyRepository {
 //        addRateToHistory("CZK", rateCZK);
 
     }
+
+    public Currency getCurrencyByCode(String curCode) {
+        currencyMap.getOrDefault(curCode, null);
+    }
 }

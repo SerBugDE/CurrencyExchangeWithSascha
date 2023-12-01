@@ -4,6 +4,7 @@ package service;
 @author Sergey Bugaienko
 */
 
+import interfaces.IS_UserService;
 import model.User;
 import repository.UserRepository;
 
@@ -14,5 +15,10 @@ public class UserService {
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+
+    public User getActiveUser() {
+        return activeUser;
     }
 }

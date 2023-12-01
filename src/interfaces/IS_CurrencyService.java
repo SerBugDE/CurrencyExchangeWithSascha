@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public interface IS_CurrencyService {
-    Currency getCurrencyByCode(String curCode);
+    Currency getCurrencyByCode(String curCode); //SERG
     List<Currency> getAllCurrencies();
 
     Map<String, Rate> getRates();
@@ -21,9 +21,9 @@ public interface IS_CurrencyService {
 
 
     Account createAccount(User user, Currency currency);
-    List<Account> getUserAccounts(User user);
+    List<Account> getUserAccounts(User user); //SERG
     boolean deleteAccount(User user, Account account);
-    Optional<Account> getAccountByCurrency(User user, Currency currency);
+    Optional<Account> getAccountByCurrency(User user, Currency currency); //SERG
     boolean changeBalanceAccount(Account account, Operation operation);
 
 

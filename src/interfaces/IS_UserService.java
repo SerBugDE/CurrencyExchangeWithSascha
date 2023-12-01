@@ -14,5 +14,5 @@ public interface IS_UserService {
     Optional<User> createUser(String email, String password) throws PasswordValidateException, EmailValidateException;
     User authorisation(String email, String password);
     void logout();
-    User getActiveUser();
+    User getActiveUser(); //SERG
 }

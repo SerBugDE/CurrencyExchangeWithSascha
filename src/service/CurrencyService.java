@@ -4,9 +4,15 @@ package service;
 @author Sergey Bugaienko
 */
 
+import model.Account;
+import model.Currency;
+import model.User;
 import repository.AccountRepository;
 import repository.CurrencyRepository;
 import repository.OperationRepository;
+
+import java.util.List;
+import java.util.Optional;
 
 public class CurrencyService {
     private final CurrencyRepository currencyRepo;
@@ -19,4 +25,17 @@ public class CurrencyService {
         this.accountRepo = accountRepo;
         this.operationRepo = operationRepo;
     }
+
+    public List<Account> getUserAccounts(User user){
+        return accountRepo.getAllUsersAccounts(user);
+    }
+
+    public Currency getCurrencyByCode(String curCode){
+        return currencyRepo.getCurrencyByCode(curCode);
+    }
+
+    public Optional<Account> getAccountByCurrency(User user, Currency currency) {
+        return accountRepo.
+    }
+
 }
