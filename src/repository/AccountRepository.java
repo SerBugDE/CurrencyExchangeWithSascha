@@ -10,6 +10,7 @@ import model.Currency;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class AccountRepository implements IR_AccountRepo {
     private final AtomicInteger currentAccountId = new AtomicInteger(1);
@@ -72,11 +73,14 @@ public class AccountRepository implements IR_AccountRepo {
      */
     @Override
     public List<Operation> getHistory(Account account) {
-        if (accountOperations.containsKey(account.getId())){
-            return accountOperations.get(account.getId()).stream().toList();
-        } else {
-            return null;
-        }
+        return accountOperations.getOrDefault(account.getId(), new ArrayList<>());
+
+//        if (accountOperations.containsKey(account.getId())){
+////            return accountOperations.get(account.getId()).stream().toList();
+//            return new ArrayList<>(accountOperations.get(account.getId()));
+//        } else {
+//            return null;
+//        }
     }
 
     @Override
