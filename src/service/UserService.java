@@ -7,8 +7,12 @@ package service;
 import interfaces.IS_UserService;
 import model.User;
 import repository.UserRepository;
+import validators.exceptions.EmailValidateException;
+import validators.exceptions.PasswordValidateException;
 
-public class UserService {
+import java.util.Optional;
+
+public class UserService implements IS_UserService {
 
 
     private final UserRepository userRepository;
@@ -18,6 +22,21 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+
+    @Override
+    public Optional<User> createUser(String email, String password) throws PasswordValidateException, EmailValidateException {
+        //TODO Serg
+    }
+
+    @Override
+    public User authorisation(String email, String password) {
+        //TODO Sasha
+    }
+
+    @Override
+    public void logout() {
+        activeUser = null;
+    }
 
     public User getActiveUser() {
         return activeUser;
