@@ -24,7 +24,7 @@ public class AccountRepository implements IR_AccountRepo {
 
     @Override
     public Account createAccount(User user, Currency currency) {
-        return null;
+        return new Account(currentAccountId.getAndIncrement(), currency, user);
         //TODO Sasha
     }
 
