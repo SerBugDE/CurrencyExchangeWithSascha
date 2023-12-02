@@ -10,8 +10,9 @@ import repository.UserRepository;
 
 public class UserService {
 
-    private User activeUser;
+
     private final UserRepository userRepository;
+    private User activeUser;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;

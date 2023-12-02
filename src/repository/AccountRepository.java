@@ -26,6 +26,7 @@ public class AccountRepository implements IR_AccountRepo {
 
     @Override
     public Account createAccount(User user, Currency currency) {
+        return null;
         //TODO Sasha
     }
 
@@ -43,6 +44,7 @@ public class AccountRepository implements IR_AccountRepo {
     @Override
     public boolean applyOperation(Account account, Operation operation) {
         //TODO Serg
+        return false;
     }
 
     /**
@@ -52,7 +54,11 @@ public class AccountRepository implements IR_AccountRepo {
      */
     @Override
     public List<Operation> getHistory(Account account) {
-       // TODO Sasha
+        if (accountOperations.containsKey(account.getId())){
+            return accountOperations.get(account.getId()).stream().toList();
+        } else {
+            return null;
+        }
     }
 
     @Override
