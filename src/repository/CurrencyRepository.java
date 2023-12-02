@@ -66,7 +66,8 @@ public class CurrencyRepository implements IR_CurrencyRepo {
 
     @Override
     public List<Currency> getAllCurrencies() {
-        return currencyMap.values().stream().toList();
+        return new ArrayList<>(currencyMap.values());
+//        return currencyMap.values().stream().toList();
         //TODO Sasha flatMat
     }
 

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class OperationRepository implements IR_OperationRepo {
     private final AtomicInteger currentOperationId = new AtomicInteger(1);
@@ -42,7 +43,7 @@ public class OperationRepository implements IR_OperationRepo {
         return operations.stream()
                 .filter(Objects::nonNull)
                 .filter(operation -> operation.getUser().getId() == user.getId())
-                .toList();
+                .collect(Collectors.toList());
         //TODO Sasha
     }
 }
