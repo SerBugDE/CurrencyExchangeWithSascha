@@ -33,7 +33,9 @@ public class UserRepository implements IR_UserRepo {
 
     @Override
     public User addUser(String email, String password) {
-         //TODO Serg
+        User user = new User(currentUserId.getAndIncrement(), email, password);
+        users.add(user);
+        return user;
     }
 
     @Override
