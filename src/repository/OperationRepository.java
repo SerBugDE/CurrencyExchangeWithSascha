@@ -12,6 +12,7 @@ import model.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class OperationRepository implements IR_OperationRepo {
@@ -38,6 +39,10 @@ public class OperationRepository implements IR_OperationRepo {
 
     @Override
     public List<Operation> getUserOperations(User user) {
+        return operations.stream()
+                .filter(Objects::nonNull)
+                .filter(operation -> operation.getUser().getId() == user.getId())
+                .toList();
         //TODO Sasha
     }
 }

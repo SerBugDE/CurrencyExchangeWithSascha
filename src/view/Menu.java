@@ -137,7 +137,7 @@ public class Menu {
         switch (choice) {
             case 1:
                 //TODO menuUserAuthorisation(); //Sasha
-
+                userService.getActiveUser();
                 waitRead();
                 break;
             case 2:
