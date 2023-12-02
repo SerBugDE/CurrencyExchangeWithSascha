@@ -34,7 +34,7 @@ public class OperationRepository implements IR_OperationRepo {
 
     @Override
     public void saveOperation(Operation operation) {
-        //TODO Serg
+        operations.add(operation);
     }
 
     @Override

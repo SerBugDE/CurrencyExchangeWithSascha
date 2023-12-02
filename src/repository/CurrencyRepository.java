@@ -92,7 +92,7 @@ public class CurrencyRepository implements IR_CurrencyRepo {
 
     @Override
     public void addRateToHistory(String curCode, Rate rate) {
-        //TODO Sasha merge / compute
+
         historyRates.merge(curCode, new ArrayList<>(List.of(rate)), (oldList, newList) -> {
             oldList.addAll(newList);
             return oldList;

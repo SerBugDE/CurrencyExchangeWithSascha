@@ -5,10 +5,8 @@ package repository;
 */
 
 import interfaces.IR_AccountRepo;
-import model.Account;
+import model.*;
 import model.Currency;
-import model.Operation;
-import model.User;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -43,8 +41,28 @@ public class AccountRepository implements IR_AccountRepo {
 
     @Override
     public boolean applyOperation(Account account, Operation operation) {
-        //TODO Serg
-        return false;
+
+        if (!account.getCurrency().equals(operation.getCurrency())) return false;
+
+        double balance = account.getBalance();
+
+        if (operation.getType() == TypeOperation.BUY || operation.getType() == TypeOperation.DEPOSIT) {
+            balance += operation.getAmount();
+        } else {
+            balance -= operation.getAmount();
+        }
+
+        if (balance < 0) return false;
+
+        account.setBalance(balance);
+
+        accountOperations.merge(account.getId(), new ArrayList<>(List.of(operation)),
+                (oldList, newList) -> {
+                    oldList.addAll(newList);
+                    return oldList;
+                });
+
+        return true;
     }
 
     /**
