@@ -14,8 +14,7 @@ import java.util.Optional;
 
 public interface IR_AccountRepo {
     Account createAccount(User user, Currency currency);
-    @Deprecated
-    Account createAccount(int userId, Currency currency);
+
 
     List<Account> getAllUsersAccounts(User user); // SERG
 

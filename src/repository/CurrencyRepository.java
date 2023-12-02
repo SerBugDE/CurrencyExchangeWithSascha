@@ -4,14 +4,16 @@ package repository;
 @author Sergey Bugaienko
 */
 
+import interfaces.IR_CurrencyRepo;
 import model.Currency;
 import model.Rate;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CurrencyRepository {
+public class CurrencyRepository implements IR_CurrencyRepo {
 
     private final Map<String, Rate> rates; // codeCurrency
     private final Map<String, Currency> currencyMap; // codeCur Currency
@@ -50,15 +52,54 @@ public class CurrencyRepository {
         rates.put("CZK", rateCZK);
 
         //TODO раскомментировать после добавления реализации метода
-//        addRateToHistory("EUR", rateEUR);
-//        addRateToHistory("USD", rateUSD);
-//        addRateToHistory("GBP", rateGBP);
-//        addRateToHistory("PLN", ratePLN);
-//        addRateToHistory("CZK", rateCZK);
+        addRateToHistory("EUR", rateEUR);
+        addRateToHistory("USD", rateUSD);
+        addRateToHistory("GBP", rateGBP);
+        addRateToHistory("PLN", ratePLN);
+        addRateToHistory("CZK", rateCZK);
 
     }
 
     public Currency getCurrencyByCode(String curCode) {
-        currencyMap.getOrDefault(curCode, null);
+        return currencyMap.getOrDefault(curCode, null);
+    }
+
+    @Override
+    public List<Currency> getAllCurrencies() {
+        //TODO Sasha flatMat
+    }
+
+    @Override
+    public Rate getCurrencyRate(String curCode) {
+       return rates.get(curCode);
+    }
+
+    @Override
+    public Rate getCurrencyRate(Currency currency) {
+        return getCurrencyRate(currency.getCode());
+    }
+
+    @Override
+    public List<Rate> getRateHistory(String curCode) {
+        return historyRates.getOrDefault(curCode, new ArrayList<>());
+    }
+
+    @Override
+    public List<Rate> getRateHistory(Currency currency) {
+        return getRateHistory(currency.getCode());
+    }
+
+    @Override
+    public void addRateToHistory(String curCode, Rate rate) {
+        //TODO Sasha merge / compute
+        historyRates.merge(curCode, new ArrayList<>(List.of(rate)), (oldList, newList) -> {
+            oldList.addAll(newList);
+            return oldList;
+        });
+    }
+
+    @Override
+    public void addRateToHistory(Currency currency, Rate rate) {
+        addRateToHistory(currency.getCode(), rate);
     }
 }
