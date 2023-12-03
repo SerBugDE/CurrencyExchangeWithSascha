@@ -56,6 +56,8 @@ public class CurrencyService implements IS_CurrencyService {
 
     @Override
     public Account createAccount(User user, Currency currency) {
+        //TODO Реализовать проверку на существование аккаунта
+        // Или проверка должна быть в методах, которые будут вызывать этот метод, например при обмене валюты или депозите
         return accountRepo.createAccount(user, currency);
     }
 
