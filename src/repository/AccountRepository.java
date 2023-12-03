@@ -25,7 +25,9 @@ public class AccountRepository implements IR_AccountRepo {
     @Override
     public Account createAccount(User user, Currency currency) {
         Account account = new Account(currentAccountId.getAndIncrement(), currency, user);
-        accounts.get(user.getId()).add(account);
+        List<Account> usersAccount = accounts.getOrDefault(user.getId(), new ArrayList<>());
+        usersAccount.add(account);
+        accounts.put(user.getId(), usersAccount);
         return account;
         //TODO Sasha
     }
