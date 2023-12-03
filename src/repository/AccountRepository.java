@@ -69,7 +69,7 @@ public class AccountRepository implements IR_AccountRepo {
     /**
      * История операция по счету
      * @param account
-     * @return
+     * @return List<Operation>  for Account
      */
     @Override
     public List<Operation> getHistory(Account account) {
